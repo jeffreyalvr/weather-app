@@ -1,7 +1,22 @@
-import "./styles.css";
+import { useState } from "react";
+
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const Home = () => {
-  return <div>Home</div>;
+  const [text, setText] = useState("");
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setText(value);
+  };
+
+  return (
+    <div className="wrapper">
+      <Header text={text} handleInputChange={handleInputChange} />
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;

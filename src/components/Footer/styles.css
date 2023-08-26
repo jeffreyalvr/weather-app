@@ -1,0 +1,32 @@
+footer {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0 0 0;
+}
+
+footer a:link,
+footer a:active,
+footer a:hover,
+footer a:visited {
+  color: #447efb;
+}
+
+footer span {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+footer span b {
+  color: #30b0cc;
+}
+
+@media screen and (max-width: 500px) {
+  footer {
+    padding: 40px 20px !important;
+  }
+  footer span {
+    font-size: 1rem;
+  }
+}
