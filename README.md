@@ -15,7 +15,7 @@ Projeto para listagem de informações relacionadas ao clima da cidade pesquisad
 
 Para testar o projeto em produção, acesse o seguinte link hospedado na plataforma Vercel:<br>
 
-> _link a ser adicionado._
+https://projeto-weather-app.vercel.app
 
 ## Acesso por meio de instalação local
 
