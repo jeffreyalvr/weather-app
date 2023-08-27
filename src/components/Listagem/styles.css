@@ -1,0 +1,109 @@
+.listagem {
+  width: 100%;
+  height: auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.listagem .hoje {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  padding: 30px 0;
+  letter-spacing: 0.4pt;
+  gap: 70px;
+}
+
+.listagem .hoje .detalhes span {
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.listagem .hoje .clima {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-right: 1px solid #ababab78;
+  padding: 0 70px 0 0;
+}
+
+.listagem .hoje .clima .temperatura {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.listagem .hoje .clima span {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.listagem .hoje p {
+  font-size: 20px;
+  color: #cacaca;
+}
+
+.listagem .hoje .temperatura p {
+  text-transform: capitalize;
+}
+
+.listagem .adicional {
+  width: 100%;
+  height: auto;
+  background-color: #3636361f;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+h1 {
+  font-size: 28px;
+  letter-spacing: 0.4pt;
+  color: #fff;
+}
+
+.days-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.day-item {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+  color: #fff;
+}
+
+.day-item:not(:last-child) {
+  border-right: 1px solid #ababab78;
+}
+
+.day-item span {
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.day-item img {
+  height: 64px;
+  width: 64px;
+  margin: 10px 0;
+}
+
+.day-item p {
+  color: #cacaca;
+}
