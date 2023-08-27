@@ -13,7 +13,7 @@ const Footer = () => {
           @jeffreyalvr
         </a>
       </span>
-      <p className="disclaimer">
+      <p>
         Informações buscadas através da API pública{" "}
         <a href="#">a ser decidida</a>.
       </p>
