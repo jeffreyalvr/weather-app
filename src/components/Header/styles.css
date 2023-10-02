@@ -69,3 +69,18 @@ header {
 .search-container button:hover {
   background-color: #ffffff;
 }
+
+@media screen and (max-width: 950px) {
+  .search-container {
+    flex-direction: column;
+  }
+  .search-container input[type="text"] {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .logo-container {
+    flex-direction: column;
+  }
+}
