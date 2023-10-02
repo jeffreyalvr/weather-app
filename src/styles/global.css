@@ -5,14 +5,6 @@
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 80px 0 0 0;
-  max-width: 1000px;
-}
-
 body {
   background: linear-gradient(180deg, #307aba, #8e4b4b);
   background-attachment: fixed;
@@ -21,24 +13,37 @@ body {
   align-items: center;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 80px 0 0 0;
+  max-width: 1000px;
+  width: 100%;
+}
+
 ::selection {
   background-color: #626262b0;
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 1200px) {
-  .wrapper {
+  #root {
     margin: 0 50px;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .wrapper {
+  #root {
     margin: 0 30px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .wrapper {
+  #root {
     margin: 0 20px;
   }
 }
