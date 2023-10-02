@@ -4,9 +4,9 @@ import img_sunny from "../../assets/icons/sunny.png";
 import img_rainning from "../../assets/icons/rainning.png";
 import img_empty from "../../assets/icons/no-image.png";
 
-const Listagem = () => {
+const Detalhes = ({ overrideClass }) => {
   return (
-    <div className="listagem">
+    <div className={`detalhes ${overrideClass}`}>
       <div className="hoje">
         <div className="clima">
           <img src={img_empty} alt="" />
@@ -64,4 +64,4 @@ const Listagem = () => {
   );
 };
 
-export default Listagem;
+export default Detalhes;

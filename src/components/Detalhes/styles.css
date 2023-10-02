@@ -1,4 +1,4 @@
-.listagem {
+.detalhes {
   width: 100%;
   height: auto;
   padding: 30px;
@@ -7,7 +7,7 @@
   gap: 20px;
 }
 
-.listagem .hoje {
+.detalhes .hoje {
   width: 100%;
   height: auto;
   display: flex;
@@ -21,13 +21,13 @@
   flex-wrap: wrap;
 }
 
-.listagem .hoje .detalhes span {
+.detalhes .hoje .info span {
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.listagem .hoje .clima {
+.detalhes .hoje .clima {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -37,28 +37,28 @@
   padding: 0 70px 0 0;
 }
 
-.listagem .hoje .clima .temperatura {
+.detalhes .hoje .clima .temperatura {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
 }
 
-.listagem .hoje .clima span {
+.detalhes .hoje .clima span {
   font-size: 40px;
   font-weight: bold;
 }
 
-.listagem .hoje p {
+.detalhes .hoje p {
   font-size: 20px;
   color: #cacaca;
 }
 
-.listagem .hoje .temperatura p {
+.detalhes .hoje .temperatura p {
   text-transform: capitalize;
 }
 
-.listagem .adicional {
+.detalhes .adicional {
   width: 100%;
   height: auto;
   background-color: #3636361f;
@@ -66,7 +66,7 @@
   padding: 30px;
 }
 
-.listagem h1 {
+.detalhes h1 {
   font-size: 28px;
   letter-spacing: 0.4pt;
   color: #fff;
@@ -112,19 +112,19 @@
 }
 
 @media screen and (max-width: 800px) {
-  .listagem {
+  .detalhes {
     padding: 0;
   }
-  .listagem .hoje {
+  .detalhes .hoje {
     flex-direction: column;
     gap: 30px;
   }
-  .listagem .hoje .clima {
+  .detalhes .hoje .clima {
     padding: 0 0 30px 0;
     border-right: 0px;
     border-bottom: 1px solid #ababab78;
   }
-  .listagem .hoje .detalhes {
+  .detalhes .hoje .info {
     display: flex;
     flex-direction: column;
     align-items: center;

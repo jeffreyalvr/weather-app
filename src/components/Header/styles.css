@@ -70,6 +70,37 @@ header {
   background-color: #ffffff;
 }
 
+.listagem {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 25px;
+  margin-top: 20px;
+  padding: 30px;
+  height: auto;
+}
+
+.listagem .cidades {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.listagem .cidades .item {
+  color: #3b3b3b;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.listagem .cidades .item:hover {
+  background-color: #efefef;
+  cursor: pointer;
+}
+
+.listagem .cidades .item::before {
+  content: "🔹";
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 950px) {
   .search-container {
     flex-direction: column;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Header from "../../components/Header";
-import Listagem from "../../components/Listagem";
+import Detalhes from "../../components/Detalhes";
 import Footer from "../../components/Footer";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className="wrapper">
       <Header text={text} handleInputChange={handleInputChange} />
-      <Listagem />
+      <Detalhes overrideClass="hidden" />
       <Footer />
     </div>
   );
