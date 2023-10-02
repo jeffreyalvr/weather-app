@@ -17,6 +17,7 @@ header {
 .logo-container span {
   font-size: 50px;
   letter-spacing: 4pt;
+  text-align: center;
   color: #fff;
 }
 
