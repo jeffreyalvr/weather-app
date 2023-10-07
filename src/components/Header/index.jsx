@@ -17,6 +17,10 @@ const Header = ({
     "Jos",
   ];
 
+  const handleKeyPress = (e) => {
+    if (e.keyCode == 13) handleSubmit();
+  };
+
   return (
     <header>
       <div className="logo-container">
@@ -28,6 +32,7 @@ const Header = ({
           type="text"
           value={texto}
           onChange={handleInputChange}
+          onKeyDown={handleKeyPress}
           placeholder="Procure uma cidade..."
         />
         <button onClick={handleSubmit}>

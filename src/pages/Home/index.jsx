@@ -43,7 +43,7 @@ const Home = () => {
         handleInputChange={handleInputChange}
         handleBuscaCidade={handleBuscaCidade}
       />
-      {resultado !== null && <Detalhes resultado={resultado} />}
+      {resultado && <Detalhes resultado={resultado} />}
       <Footer />
     </div>
   );
