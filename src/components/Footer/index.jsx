@@ -15,7 +15,14 @@ const Footer = () => {
       </span>
       <p>
         Informações buscadas através da API pública{" "}
-        <a href="#">a ser decidida</a>.
+        <a
+          href="https://openweathermap.org/weather-dashboard/dashboard-documentation"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          OpenWeather API
+        </a>
+        .
       </p>
     </footer>
   );
