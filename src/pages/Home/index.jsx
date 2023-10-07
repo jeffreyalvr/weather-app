@@ -5,7 +5,7 @@ import Detalhes from "../../components/Detalhes";
 import Footer from "../../components/Footer";
 
 const Home = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState("João Pessoa");
 
   const handleInputChange = (e) => {
     const value = e.target.value;

@@ -27,7 +27,7 @@ body {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 @media screen and (max-width: 1200px) {
