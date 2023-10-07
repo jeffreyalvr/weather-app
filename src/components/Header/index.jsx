@@ -1,11 +1,14 @@
 import "./styles.css";
 
-import { useState } from "react";
-
 import img_logo from "../../assets/images/logo.png";
 import img_search from "../../assets/icons/search.png";
 
-const Header = ({ text, handleInputChange }) => {
+const Header = ({
+  texto,
+  handleSubmit,
+  handleInputChange,
+  handleBuscaCidade,
+}) => {
   const cidades_placeholder = [
     "João Pessoa",
     "Johannesburg",
@@ -13,18 +16,6 @@ const Header = ({ text, handleInputChange }) => {
     "Johor Bahru",
     "Jos",
   ];
-
-  const [dados, setDados] = useState({});
-
-  const handleCidade = (cidade) => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
-        import.meta.env.VITE_API_KEY
-      }&units=metric`
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  };
 
   return (
     <header>
@@ -35,11 +26,11 @@ const Header = ({ text, handleInputChange }) => {
       <div className="search-container">
         <input
           type="text"
-          value={text}
+          value={texto}
           onChange={handleInputChange}
           placeholder="Procure uma cidade..."
         />
-        <button onClick={() => handleCidade(text.toLowerCase())}>
+        <button onClick={handleSubmit}>
           <img src={img_search} />
           <span>Procurar</span>
         </button>
@@ -50,7 +41,7 @@ const Header = ({ text, handleInputChange }) => {
             <div
               className="item"
               key={i}
-              onClick={() => handleCidade(cidade.toLowerCase())}
+              onClick={() => handleBuscaCidade(cidade)}
             >
               {cidade}
             </div>

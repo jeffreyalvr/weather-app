@@ -4,20 +4,22 @@ import img_sunny from "../../assets/icons/sunny.png";
 import img_rainning from "../../assets/icons/rainning.png";
 import img_empty from "../../assets/icons/no-image.png";
 
-const Detalhes = ({ overrideClass }) => {
+const Detalhes = ({ overrideClass, resultado }) => {
   return (
     <div className={`detalhes ${overrideClass}`}>
       <div className="hoje">
         <div className="clima">
           <img src={img_empty} alt="" />
           <div className="temperatura">
-            <span>(vazio)</span>
-            <p>status</p>
+            <span>{resultado?.main?.temp} ºC</span>
+            <p>{resultado?.weather?.description}</p>
           </div>
         </div>
         <div className="detalhes">
           <span>DIA</span>
-          <p>cidade, estado</p>
+          <p>
+            {resultado?.name}, {resultado?.sys?.country}
+          </p>
         </div>
       </div>
       <div className="adicional">
