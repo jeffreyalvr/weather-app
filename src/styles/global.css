@@ -5,8 +5,17 @@
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
+:root {
+  --border-color: #d5d5d54d;
+  --border-dark-color: #ababab78;
+  --link-color: #44fbb2;
+  --selection-bg-color: #626262b0;
+  --color-blue: #307aba;
+  --color-red: #8e4b4b;
+}
+
 body {
-  background: linear-gradient(180deg, #307aba, #8e4b4b);
+  background: linear-gradient(180deg, var(--color-blue), var(--color-red));
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
@@ -23,7 +32,7 @@ body {
 }
 
 ::selection {
-  background-color: #626262b0;
+  background-color: var(--selection-bg-color);
 }
 
 .hidden {

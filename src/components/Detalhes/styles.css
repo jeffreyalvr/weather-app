@@ -40,7 +40,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  border-right: 1px solid #ababab78;
+  border-right: 1px solid var(--border-dark-color);
   padding: 0 70px 0 0;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .day-item:not(:last-child) {
-  border-right: 1px solid #ababab78;
+  border-right: 1px solid var(--border-dark-color);
 }
 
 .day-item span {
@@ -127,7 +127,7 @@
   .detalhes .hoje .clima {
     padding: 0 0 30px 0;
     border-right: 0px;
-    border-bottom: 1px solid #ababab78;
+    border-bottom: 1px solid var(--border-dark-color);
   }
   .detalhes .hoje .info {
     display: flex;
@@ -136,7 +136,7 @@
   }
   .day-item:not(:last-child) {
     border-right: 0;
-    border-bottom: 1px solid #ababab78;
+    border-bottom: 1px solid var(--border-dark-color);
   }
   .day-item {
     padding: 20px 0;

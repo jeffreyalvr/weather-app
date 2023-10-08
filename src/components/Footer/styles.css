@@ -4,7 +4,7 @@ footer {
   flex-direction: column;
   align-items: center;
   margin: 100px 0 0 0;
-  border-top: 1px solid #d5d5d54d;
+  border-top: 1px solid var(--border-color);
   width: 100%;
   text-align: center;
 }
@@ -13,7 +13,7 @@ footer a:link,
 footer a:active,
 footer a:hover,
 footer a:visited {
-  color: #44fbb2;
+  color: var(--link-color);
 }
 
 footer span {
@@ -22,11 +22,11 @@ footer span {
 }
 
 footer span b {
-  color: #44fbb2;
+  color: var(--link-color);
 }
 
 footer p {
-  color: #cccccc;
+  color: #ccc;
 }
 
 @media screen and (max-width: 500px) {
