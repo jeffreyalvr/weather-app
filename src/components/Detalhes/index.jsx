@@ -15,7 +15,7 @@ const Detalhes = ({ overrideClass, resultado }) => {
             <p>{resultado?.weather?.description}</p>
           </div>
         </div>
-        <div className="detalhes">
+        <div className="info">
           <span>Local</span>
           <p>
             {resultado?.name}, {resultado?.sys?.country}

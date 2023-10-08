@@ -21,8 +21,14 @@
   flex-wrap: wrap;
 }
 
+.detalhes .hoje .info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .detalhes .hoje .info span {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
 }
