@@ -1,5 +1,6 @@
 .detalhes {
-  width: auto;
+  max-width: 1000px;
+  width: 100%;
   height: auto;
   padding: 30px;
   display: flex;
@@ -81,11 +82,9 @@
 
 .days-container {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(125px, auto));
   margin-top: 30px;
-  flex-wrap: wrap;
 }
 
 .day-item {
@@ -134,5 +133,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  .day-item:not(:last-child) {
+    border-right: 0;
+    border-bottom: 1px solid #ababab78;
+  }
+  .day-item {
+    padding: 20px 0;
   }
 }
