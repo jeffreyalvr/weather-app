@@ -25,6 +25,8 @@ const Home = () => {
   };
 
   const handleBuscaCidade = (cidade) => {
+    if (busca === "") return;
+
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
         import.meta.env.VITE_API_KEY
@@ -43,7 +45,9 @@ const Home = () => {
         handleInputChange={handleInputChange}
         handleBuscaCidade={handleBuscaCidade}
       />
-      {resultado && <Detalhes resultado={resultado} />}
+      {Object.keys(resultado).length > 0 ? (
+        <Detalhes resultado={resultado} />
+      ) : null}
       <Footer />
     </div>
   );
