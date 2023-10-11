@@ -46,11 +46,3 @@
 .erro-container .erro-btn:hover {
   background-color: #fff;
 }
-
-.erro-container.show {
-  display: flex;
-}
-
-.erro-container.hide {
-  display: block;
-}

@@ -4,7 +4,7 @@ import warning_icon from "../../assets/icons/warning.png";
 
 const Erro = ({ tipo, handleFecharModal }) => {
   return (
-    <div className="erro-container">
+    <div className="erro-container animate">
       <div className="erro-body">
         <img src={warning_icon} alt="Erro" title="Erro" />
         <span>

@@ -6,7 +6,7 @@ import img_empty from "../../assets/icons/no-image.png";
 
 const Detalhes = ({ overrideClass, resultado }) => {
   return (
-    <div className={`detalhes ${overrideClass}`}>
+    <div className={`detalhes animate ${overrideClass}`}>
       <div className="hoje">
         <div className="clima">
           <img src={img_empty} alt="" />

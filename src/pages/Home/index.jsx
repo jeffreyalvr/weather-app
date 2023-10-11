@@ -42,7 +42,7 @@ const Home = () => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper animate">
       <Header
         texto={texto}
         handleSubmit={handleSubmit}
