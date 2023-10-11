@@ -36,7 +36,7 @@ const Header = ({
           placeholder="Procure uma cidade..."
         />
         <button onClick={handleSubmit}>
-          <img src={img_search} />
+          <img src={img_search} alt="Botão de procurar" />
           <span>Procurar</span>
         </button>
       </div>
