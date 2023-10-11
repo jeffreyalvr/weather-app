@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import warning_icon from "../../assets/icons/warning.png";
 
-const Erro = () => {
+const Erro = ({ tipo }) => {
   const [estadoModal, setEstadoModal] = useState(true);
 
   const handleFecharModal = () => {
@@ -17,8 +17,11 @@ const Erro = () => {
         <img src={warning_icon} alt="Erro" title="Erro" />
       </div>
       <div className="erro-body">
-        <span>Não foi possível realizar a busca.</span>
-        <span>Tente novamente.</span>
+        <span>
+          {tipo === 1
+            ? "O campo de busca não pode ficar vazio."
+            : "Ocorreu um erro ao se conectar ao OpenWeather."}
+        </span>
       </div>
       <button
         className="erro-btn"

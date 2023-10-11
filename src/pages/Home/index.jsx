@@ -7,11 +7,11 @@ import Footer from "../../components/Footer";
 
 const Home = () => {
   const [texto, setTexto] = useState("");
-  const [busca, setBusca] = useState("");
+  const [busca, setBusca] = useState(null);
   const [resultado, setResultado] = useState({});
   // INFO: unidade: "metric" || "imperial"
   const [unidade, setUnidade] = useState("metric");
-  const [erro, setErro] = useState(false);
+  const [erro, setErro] = useState({ status: false, tipo: 1 });
 
   useEffect(() => {
     handleBuscaCidade(busca);
@@ -27,7 +27,7 @@ const Home = () => {
   };
 
   const handleBuscaCidade = (cidade) => {
-    if (busca === "") return setErro(true);
+    if (busca === "") return setErro({ status: true, tipo: 1 });
 
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
@@ -36,10 +36,10 @@ const Home = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setErro(false);
+        setErro({ status: false, tipo: 1 });
         setResultado(data);
       })
-      .catch((err) => setErro(true));
+      .catch((err) => setErro({ status: true, tipo: 2 }));
   };
 
   return (
@@ -50,7 +50,7 @@ const Home = () => {
         handleInputChange={handleInputChange}
         handleBuscaCidade={handleBuscaCidade}
       />
-      {erro && <Erro />}
+      {erro.status && <Erro tipo={erro.tipo} />}
       {Object.keys(resultado).length > 0 && <Detalhes resultado={resultado} />}
       <Footer />
     </div>
