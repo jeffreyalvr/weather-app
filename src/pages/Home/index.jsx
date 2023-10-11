@@ -10,7 +10,11 @@ const Home = () => {
   const [resultado, setResultado] = useState({});
   // INFO: unidade: "metric" || "imperial"
   const [unidade, setUnidade] = useState("metric");
-  const [erro, setErro] = useState({ status: false, tipo: 1 });
+  const [modal, setModal] = useState({ estado: false, tipo: 1 });
+
+  const handleFecharModal = () => {
+    setModal({ estado: false });
+  };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -22,7 +26,7 @@ const Home = () => {
   };
 
   const handleBuscaCidade = (cidade) => {
-    if (texto === "") return setErro({ status: true, tipo: 1 });
+    if (texto === "") return setModal({ estado: true, tipo: 1 });
 
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
@@ -31,10 +35,10 @@ const Home = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setErro({ status: false, tipo: 1 });
+        setModal({ estado: false, tipo: 1 });
         setResultado(data);
       })
-      .catch((err) => setErro({ status: true, tipo: 2 }));
+      .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
 
   return (
@@ -45,8 +49,10 @@ const Home = () => {
         handleInputChange={handleInputChange}
         handleBuscaCidade={handleBuscaCidade}
       />
-      {erro.status && <Erro tipo={erro.tipo} />}
-      {Object.keys(resultado).length > 0 && <Detalhes resultado={resultado} />}
+      {modal.estado && (
+        <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
+      )}
+      {!!Object.keys(resultado).length && <Detalhes resultado={resultado} />}
       <Footer />
     </div>
   );
