@@ -24,7 +24,7 @@ const Header = ({
   return (
     <header>
       <div className="logo-container">
-        <img src={img_logo} />
+        <img src={img_logo} alt="Logo do Weather App" />
         <span>Weather App</span>
       </div>
       <div className="search-container">
