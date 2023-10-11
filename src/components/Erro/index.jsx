@@ -13,10 +13,8 @@ const Erro = ({ tipo }) => {
 
   return estadoModal ? (
     <div className="erro-container">
-      <div className="erro-header">
-        <img src={warning_icon} alt="Erro" title="Erro" />
-      </div>
       <div className="erro-body">
+        <img src={warning_icon} alt="Erro" title="Erro" />
         <span>
           {tipo === 1
             ? "O campo de busca não pode ficar vazio."
@@ -28,7 +26,7 @@ const Erro = ({ tipo }) => {
         title="Fechar"
         onClick={() => handleFecharModal}
       >
-        Fechar
+        X
       </button>
     </div>
   ) : null;

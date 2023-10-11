@@ -7,15 +7,10 @@ import Footer from "../../components/Footer";
 
 const Home = () => {
   const [texto, setTexto] = useState("");
-  const [busca, setBusca] = useState(null);
   const [resultado, setResultado] = useState({});
   // INFO: unidade: "metric" || "imperial"
   const [unidade, setUnidade] = useState("metric");
   const [erro, setErro] = useState({ status: false, tipo: 1 });
-
-  useEffect(() => {
-    handleBuscaCidade(busca);
-  }, [busca]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -23,11 +18,11 @@ const Home = () => {
   };
 
   const handleSubmit = () => {
-    setBusca(texto);
+    handleBuscaCidade(texto);
   };
 
   const handleBuscaCidade = (cidade) => {
-    if (busca === "") return setErro({ status: true, tipo: 1 });
+    if (texto === "") return setErro({ status: true, tipo: 1 });
 
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
