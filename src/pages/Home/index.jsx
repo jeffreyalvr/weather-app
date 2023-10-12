@@ -9,7 +9,9 @@ const Home = () => {
   const [texto, setTexto] = useState("");
   const [resultado, setResultado] = useState({});
   // INFO: unidade: "metric" || "imperial"
-  const [unidade, setUnidade] = useState("metric");
+  const [unidade, setUnidade] = useState(
+    localStorage.getItem("unidade") || "metric"
+  );
   const [modal, setModal] = useState({ estado: false, tipo: 1 });
   const [buscaAtiva, setBuscaAtiva] = useState(false);
 
@@ -24,6 +26,7 @@ const Home = () => {
 
   const handleUnidade = (unidade) => {
     setUnidade(unidade);
+    localStorage.setItem("unidade", unidade);
   };
 
   const handleInputChange = (e) => {
