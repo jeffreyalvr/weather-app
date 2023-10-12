@@ -12,7 +12,8 @@ const Detalhes = ({ overrideClass, resultado, unidade }) => {
           <img src={img_empty} alt="" />
           <div className="temperatura">
             <span>
-              {resultado?.main?.temp + ` º${unidade === "metric" ? "C" : "F"}`}
+              {resultado?.main?.temp.toFixed() +
+                ` º${unidade === "metric" ? "C" : "F"}`}
             </span>
             <p>{resultado?.weather?.description}</p>
           </div>
