@@ -8,7 +8,6 @@ import Footer from "../../components/Footer";
 const Home = () => {
   const [texto, setTexto] = useState("");
   const [resultado, setResultado] = useState({});
-  const [forecast, setForecast] = useState([]); // TEMPORARY: editar depois para
   // INFO: unidade: "metric" || "imperial"
   const [unidade, setUnidade] = useState(
     localStorage.getItem("unidade") || "metric"
@@ -64,7 +63,10 @@ const Home = () => {
       .then((dados) => {
         setModal({ estado: false, tipo: 1 });
         setTexto(dados.name);
-        setResultado(dados);
+        setResultado((prevState) => ({
+          ...prevState,
+          atual: dados,
+        }));
         setBuscaAtiva(true);
         handleTemperaturaPorHorarios(dados);
       })
@@ -85,7 +87,10 @@ const Home = () => {
       })
       .then((forecast_dados) => {
         setModal({ estado: false, tipo: 1 });
-        setForecast(forecast_dados.list);
+        setResultado((prevState) => ({
+          ...prevState,
+          horarios: forecast_dados.list,
+        }));
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
@@ -104,8 +109,8 @@ const Home = () => {
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
       )}
-      {resultado && forecast && !!Object.keys(resultado).length && (
-        <Detalhes resultado={resultado} forecast={forecast} unidade={unidade} />
+      {resultado && !!Object.keys(resultado).length && (
+        <Detalhes resultado={resultado} unidade={unidade} />
       )}
       <Footer />
     </div>
