@@ -11,9 +11,19 @@ const Home = () => {
   // INFO: unidade: "metric" || "imperial"
   const [unidade, setUnidade] = useState("metric");
   const [modal, setModal] = useState({ estado: false, tipo: 1 });
+  const [buscaAtiva, setBuscaAtiva] = useState(false);
+
+  useEffect(() => {
+    if (!buscaAtiva) return;
+    handleBuscaCidade(texto);
+  }, [unidade]);
 
   const handleFecharModal = () => {
     setModal({ estado: false });
+  };
+
+  const handleUnidade = (unidade) => {
+    setUnidade(unidade);
   };
 
   const handleInputChange = (e) => {
@@ -40,6 +50,7 @@ const Home = () => {
       .then((data) => {
         setModal({ estado: false, tipo: 1 });
         setResultado(data);
+        setBuscaAtiva(true);
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
@@ -51,12 +62,14 @@ const Home = () => {
         handleSubmit={handleSubmit}
         handleInputChange={handleInputChange}
         handleBuscaCidade={handleBuscaCidade}
+        unidade={unidade}
+        handleUnidade={handleUnidade}
       />
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
       )}
       {resultado && !!Object.keys(resultado).length && (
-        <Detalhes resultado={resultado} />
+        <Detalhes resultado={resultado} unidade={unidade} />
       )}
       <Footer />
     </div>

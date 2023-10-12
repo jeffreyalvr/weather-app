@@ -4,14 +4,16 @@ import img_sunny from "../../assets/icons/sunny.png";
 import img_rainning from "../../assets/icons/rainning.png";
 import img_empty from "../../assets/icons/no-image.png";
 
-const Detalhes = ({ overrideClass, resultado }) => {
+const Detalhes = ({ overrideClass, resultado, unidade }) => {
   return (
     <div className={`detalhes animate ${overrideClass}`}>
       <div className="hoje">
         <div className="clima">
           <img src={img_empty} alt="" />
           <div className="temperatura">
-            <span>{resultado?.main?.temp + " ºC"}</span>
+            <span>
+              {resultado?.main?.temp + ` º${unidade === "metric" ? "C" : "F"}`}
+            </span>
             <p>{resultado?.weather?.description}</p>
           </div>
         </div>

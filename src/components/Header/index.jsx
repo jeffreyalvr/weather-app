@@ -8,6 +8,8 @@ const Header = ({
   handleSubmit,
   handleInputChange,
   handleBuscaCidade,
+  unidade,
+  handleUnidade,
 }) => {
   const cidades_placeholder = [
     "João Pessoa",
@@ -41,10 +43,18 @@ const Header = ({
             <span>Procurar</span>
           </button>
           <div className="unidade-container">
-            <div className="unidade" title="Usar sistema imperial">
+            <div
+              className={`unidade ${unidade === "imperial" && "ativo"}`}
+              title="Usar sistema imperial"
+              onClick={() => handleUnidade("imperial")}
+            >
               ºF
             </div>
-            <div className="unidade ativo" title="Usar sistema métrico">
+            <div
+              className={`unidade ${unidade === "metric" && "ativo"}`}
+              title="Usar sistema métrico"
+              onClick={() => handleUnidade("metric")}
+            >
               ºC
             </div>
           </div>
