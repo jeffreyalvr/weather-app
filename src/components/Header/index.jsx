@@ -2,6 +2,7 @@ import "./styles.css";
 
 import img_logo from "../../assets/images/logo.png";
 import img_search from "../../assets/icons/search.png";
+import img_localizacao from "../../assets/icons/localizacao.png";
 
 const Header = ({
   texto,
@@ -58,6 +59,16 @@ const Header = ({
               ºC
             </div>
           </div>
+        </div>
+      </div>
+      <div className="under-links">
+        <div className="item">
+          <img
+            class="invert"
+            src={img_localizacao}
+            alt="Ícone de localização"
+          />
+          <a href="#">Usar localização atual</a>
         </div>
       </div>
       <div className="listagem hidden">

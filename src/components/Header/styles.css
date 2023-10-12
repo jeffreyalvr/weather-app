@@ -21,6 +21,38 @@ header {
   color: #fff;
 }
 
+::placeholder {
+  color: #cacaca;
+}
+
+.under-links {
+  padding: 20px 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 5px;
+  height: auto;
+  width: 100%;
+}
+
+.under-links .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3px;
+}
+
+.under-links a:link,
+.under-links a:active,
+.under-links a:visited {
+  color: #cacaca;
+  text-decoration: none;
+}
+
+.under-links a:hover {
+  color: var(--link-color);
+}
+
 .search-container {
   display: flex;
   flex-flow: row wrap;
@@ -28,7 +60,7 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 56px;
+  height: auto;
 }
 
 .search-container input[type="text"] {
@@ -43,10 +75,6 @@ header {
   transition: ease-in 0.3s;
   letter-spacing: 0.4pt;
   height: 100%;
-}
-
-::placeholder {
-  color: #cacaca;
 }
 
 .search-container input[type="text"]:focus {
@@ -157,6 +185,9 @@ header {
   }
   .search-container input[type="text"] {
     width: 100%;
+  }
+  .under-links {
+    justify-content: center;
   }
 }
 

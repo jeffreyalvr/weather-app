@@ -39,6 +39,10 @@ body {
   display: none !important;
 }
 
+img.invert {
+  filter: invert(100%);
+}
+
 @media screen and (max-width: 1200px) {
   #root {
     margin: 0 50px;
