@@ -15,7 +15,7 @@ const Detalhes = ({ overrideClass, resultado, unidade }) => {
               {resultado?.main?.temp.toFixed() +
                 ` º${unidade === "metric" ? "C" : "F"}`}
             </span>
-            <p>{resultado?.weather?.description}</p>
+            <p>{resultado?.weather[0].description}</p>
           </div>
         </div>
         <div className="info">

@@ -44,7 +44,7 @@ const Home = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
         import.meta.env.VITE_API_KEY
-      }&units=${unidade}`
+      }&units=${unidade}&lang=pt`
     )
       .then((response) => {
         if (response.ok) return response.json();
@@ -54,6 +54,7 @@ const Home = () => {
         setModal({ estado: false, tipo: 1 });
         setResultado(data);
         setBuscaAtiva(true);
+        console.log(data);
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
