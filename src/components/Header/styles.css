@@ -42,14 +42,16 @@ header {
   gap: 3px;
 }
 
-.under-links a:link,
-.under-links a:active,
-.under-links a:visited {
+.under-links button {
   color: #cacaca;
   text-decoration: none;
+  border: 0;
+  background-color: transparent;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.under-links a:hover {
+.under-links button:hover {
   color: var(--link-color);
 }
 

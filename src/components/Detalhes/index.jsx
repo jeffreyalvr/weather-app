@@ -30,7 +30,6 @@ const Detalhes = ({ overrideClass, resultado, forecast, unidade }) => {
         <div className="hourly-container">
           {forecast.map((hora, i) => {
             let horario = new Date(hora.dt_txt);
-            console.log(forecast);
             return (
               <div className="hour-item" key={i}>
                 <span>{horario.getHours() + ":00 h"}</span>

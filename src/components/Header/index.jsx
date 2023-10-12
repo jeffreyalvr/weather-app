@@ -11,6 +11,7 @@ const Header = ({
   handleBuscaCidade,
   unidade,
   handleUnidade,
+  handleLocalizacao,
 }) => {
   const cidades_placeholder = [
     "João Pessoa",
@@ -64,11 +65,11 @@ const Header = ({
       <div className="under-links">
         <div className="item">
           <img
-            class="invert"
+            className="invert"
             src={img_localizacao}
             alt="Ícone de localização"
           />
-          <a href="#">Usar localização atual</a>
+          <button onClick={handleLocalizacao}>Usar localização atual</button>
         </div>
       </div>
       <div className="listagem hidden">

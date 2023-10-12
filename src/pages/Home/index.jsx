@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!buscaAtiva) return;
-    handleBuscaCidade(texto);
+    handleBuscaCidade({ cidade: texto });
   }, [unidade]);
 
   const handleFecharModal = () => {
@@ -31,19 +31,29 @@ const Home = () => {
   };
 
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    setTexto(value);
+    const valor = e.target.value;
+    setTexto(valor);
   };
 
   const handleSubmit = () => {
-    handleBuscaCidade(texto);
+    handleBuscaCidade({ cidade: texto });
   };
 
-  const handleBuscaCidade = (cidade) => {
-    if (texto === "") return setModal({ estado: true, tipo: 1 });
+  const handleLocalizacao = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      handleBuscaCidade({ lat: latitude, lon: longitude });
+    });
+  };
+
+  const handleBuscaCidade = ({ cidade, lat, lon }) => {
+    if (!{ lat, lon } && texto === "")
+      return setModal({ estado: true, tipo: 1 });
+
+    let prefix = cidade ? `q=${cidade}` : `lat=${lat}&lon=${lon}`;
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${
+      `https://api.openweathermap.org/data/2.5/weather?${prefix}&appid=${
         import.meta.env.VITE_API_KEY
       }&units=${unidade}&lang=pt`
     )
@@ -51,30 +61,31 @@ const Home = () => {
         if (response.ok) return response.json();
         return Promise.reject(response);
       })
-      .then((data) => {
+      .then((dados) => {
         setModal({ estado: false, tipo: 1 });
-        setResultado(data);
+        setTexto(dados.name);
+        setResultado(dados);
         setBuscaAtiva(true);
+        handleTemperaturaPorHorarios(dados);
+      })
+      .catch((err) => setModal({ estado: true, tipo: 2 }));
+  };
 
-        // TEMPORARY: remover depois, usado apenas para debug
-        console.log(data);
-
-        fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${
-            data.coord.lat
-          }&lon=${data.coord.lon}&appid=${
-            import.meta.env.VITE_API_KEY
-          }&cnt=15&units=${unidade}&lang=pt`
-        )
-          .then((forecast_response) => {
-            if (forecast_response.ok) return forecast_response.json();
-            return Promise.reject(forecast_response);
-          })
-          .then((forecast_data) => {
-            setModal({ estado: false, tipo: 1 });
-            setForecast(forecast_data.list);
-          })
-          .catch((err) => setModal({ estado: true, tipo: 2 }));
+  const handleTemperaturaPorHorarios = (dados) => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${
+        dados.coord.lat
+      }&lon=${dados.coord.lon}&appid=${
+        import.meta.env.VITE_API_KEY
+      }&cnt=15&units=${unidade}&lang=pt`
+    )
+      .then((forecast_response) => {
+        if (forecast_response.ok) return forecast_response.json();
+        return Promise.reject(forecast_response);
+      })
+      .then((forecast_dados) => {
+        setModal({ estado: false, tipo: 1 });
+        setForecast(forecast_dados.list);
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
@@ -88,6 +99,7 @@ const Home = () => {
         handleBuscaCidade={handleBuscaCidade}
         unidade={unidade}
         handleUnidade={handleUnidade}
+        handleLocalizacao={handleLocalizacao}
       />
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
