@@ -35,10 +35,20 @@ const Header = ({
           onKeyDown={handleKeyPress}
           placeholder="Procure uma cidade..."
         />
-        <button onClick={handleSubmit}>
-          <img src={img_search} alt="Botão de procurar" />
-          <span>Procurar</span>
-        </button>
+        <div className="right-container">
+          <button onClick={handleSubmit}>
+            <img src={img_search} alt="Botão de procurar" />
+            <span>Procurar</span>
+          </button>
+          <div className="unidade-container">
+            <div className="unidade" title="Usar sistema imperial">
+              ºF
+            </div>
+            <div className="unidade ativo" title="Usar sistema métrico">
+              ºC
+            </div>
+          </div>
+        </div>
       </div>
       <div className="listagem hidden">
         <div className="cidades">
