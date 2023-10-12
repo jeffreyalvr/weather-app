@@ -30,7 +30,13 @@
   width: 40px;
 }
 
-.erro-container .erro-body span {
+.erro-container .erro-body .message {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.erro-container .erro-body .message span {
   color: #cacaca;
 }
 

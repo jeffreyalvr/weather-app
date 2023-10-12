@@ -33,7 +33,10 @@ const Home = () => {
         import.meta.env.VITE_API_KEY
       }&units=${unidade}`
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) return response.json();
+        return Promise.reject(response);
+      })
       .then((data) => {
         setModal({ estado: false, tipo: 1 });
         setResultado(data);
@@ -52,7 +55,9 @@ const Home = () => {
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
       )}
-      {!!Object.keys(resultado).length && <Detalhes resultado={resultado} />}
+      {resultado && !!Object.keys(resultado).length && (
+        <Detalhes resultado={resultado} />
+      )}
       <Footer />
     </div>
   );
