@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 const Home = () => {
   const [texto, setTexto] = useState("");
   const [resultado, setResultado] = useState({});
+  const [forecast, setForecast] = useState([]); // TEMPORARY: editar depois para
   // INFO: unidade: "metric" || "imperial"
   const [unidade, setUnidade] = useState(
     localStorage.getItem("unidade") || "metric"
@@ -54,7 +55,26 @@ const Home = () => {
         setModal({ estado: false, tipo: 1 });
         setResultado(data);
         setBuscaAtiva(true);
+
+        // TEMPORARY: remover depois, usado apenas para debug
         console.log(data);
+
+        fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?lat=${
+            data.coord.lat
+          }&lon=${data.coord.lon}&appid=${
+            import.meta.env.VITE_API_KEY
+          }&cnt=15&units=${unidade}&lang=pt`
+        )
+          .then((forecast_response) => {
+            if (forecast_response.ok) return forecast_response.json();
+            return Promise.reject(forecast_response);
+          })
+          .then((forecast_data) => {
+            setModal({ estado: false, tipo: 1 });
+            setForecast(forecast_data.list);
+          })
+          .catch((err) => setModal({ estado: true, tipo: 2 }));
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
@@ -72,8 +92,8 @@ const Home = () => {
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
       )}
-      {resultado && !!Object.keys(resultado).length && (
-        <Detalhes resultado={resultado} unidade={unidade} />
+      {resultado && forecast && !!Object.keys(resultado).length && (
+        <Detalhes resultado={resultado} forecast={forecast} unidade={unidade} />
       )}
       <Footer />
     </div>
