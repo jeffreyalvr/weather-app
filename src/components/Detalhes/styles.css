@@ -75,10 +75,39 @@
 .detalhes .adicional .container {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 30px;
   gap: 10px;
   color: #fff;
+  flex-wrap: wrap;
+}
+
+.detalhes .adicional .container .card {
+  padding: 20px 25px;
+  background-color: #3636361f;
+  border-radius: 25px;
+  flex-grow: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.detalhes .adicional .container .card:hover {
+  background-color: rgba(168, 168, 168, 0.122);
+  transition: background-color 0.3s ease-in;
+}
+
+.detalhes .adicional .container .card img {
+  vertical-align: middle;
+  height: 32px;
+  width: 32px;
+}
+
+.detalhes .adicional .container .card .card-col {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .detalhes h1 {

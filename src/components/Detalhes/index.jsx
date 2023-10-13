@@ -4,6 +4,12 @@ import img_sunny from "../../assets/icons/sunny.png";
 import img_rainning from "../../assets/icons/rainning.png";
 import img_empty from "../../assets/icons/no-image.png";
 
+import img_wind from "../../assets/icons/wind.png";
+import img_sensation from "../../assets/icons/sensation.png";
+import img_temp_max from "../../assets/icons/temp_max.png";
+import img_temp_min from "../../assets/icons/temp_min.png";
+import img_arrow from "../../assets/icons/arrow-vertical.png";
+
 const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
   return (
     <div className={`detalhes animate`}>
@@ -29,23 +35,34 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
       <div className="adicional">
         <h1>Informações adicionais</h1>
         <div className="container">
-          <span>
+          <div className="card">
+            <img src={img_sensation} alt="Ícone de sensação térmica" />
             Sensação:{" "}
             {resultadoAtual?.main?.feels_like.toFixed() +
               ` º${unidade === "metric" ? "C" : "F"}`}
-          </span>
-          <span>
+          </div>
+          <div className="card">
+            <img src={img_temp_max} alt="Ícone de temperatura máxima" />
             Máxima:{" "}
             {resultadoAtual?.main?.temp_max.toFixed() +
               ` º${unidade === "metric" ? "C" : "F"}`}
-          </span>
-          <span>
+          </div>
+          <div className="card">
+            <img src={img_temp_min} alt="Ícone de temperatura mínima" />
             Mínima:{" "}
             {resultadoAtual?.main?.temp_min.toFixed() +
               ` º${unidade === "metric" ? "C" : "F"}`}
-          </span>
-          <span>Vento direção: {resultadoAtual?.wind?.deg}</span>
-          <span>Vento velocidade: {resultadoAtual?.wind?.speed}</span>
+          </div>
+          <div className="card">
+            <img src={img_wind} alt="Ícone de direção do vento" />
+            <div className="card-col">
+              <span>Direção do vento: {resultadoAtual?.wind?.deg}º</span>
+              <span>
+                Velocidade: {resultadoAtual?.wind?.speed?.toFixed(1)}{" "}
+                {unidade === "metric" ? "m/s" : "mi/h"}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       <div className="adicional">
