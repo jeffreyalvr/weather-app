@@ -45,7 +45,11 @@ const Home = () => {
     });
   };
 
-  const handleBuscarCidade = ({ cidade }) => {};
+  const handleBuscarCidade = ({ cidade }) => {
+    // fetch com um valor de cidade
+    // retorna cidades encontradas com o texto buscado
+    // envia os valores para o componente Header para exibição no div `listagem`
+  };
 
   const handleObterClima = ({ cidade, lat, lon }) => {
     if (!{ lat, lon } && texto === "")
