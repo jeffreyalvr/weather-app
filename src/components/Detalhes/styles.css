@@ -124,7 +124,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(125px, auto));
   margin-top: 30px;
-  gap: 30px;
 }
 
 .hour-item {
@@ -132,10 +131,11 @@
   flex-direction: column;
   align-items: center;
   color: #fff;
+  padding: 20px 0;
 }
 
 .hour-item:not(:last-child) {
-  border-right: 1px solid var(--border-dark-color);
+  border-bottom: 1px solid var(--border-dark-color);
 }
 
 .hour-item span {
@@ -172,13 +172,6 @@
     align-items: center;
   }
   .hour-item:not(:last-child) {
-    border-right: 0;
     border-bottom: 1px solid var(--border-dark-color);
-  }
-  .hourly-container {
-    gap: 0;
-  }
-  .hour-item {
-    padding: 20px 0;
   }
 }
