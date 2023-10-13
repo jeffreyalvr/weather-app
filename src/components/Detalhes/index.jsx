@@ -4,31 +4,31 @@ import img_sunny from "../../assets/icons/sunny.png";
 import img_rainning from "../../assets/icons/rainning.png";
 import img_empty from "../../assets/icons/no-image.png";
 
-const Detalhes = ({ overrideClass, resultado, unidade }) => {
+const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
   return (
-    <div className={`detalhes animate ${overrideClass}`}>
+    <div className={`detalhes animate`}>
       <div className="hoje">
         <div className="clima">
           <img src={img_empty} alt="" />
           <div className="temperatura">
             <span>
-              {resultado.atual.main.temp.toFixed() +
+              {resultadoAtual?.main?.temp.toFixed() +
                 ` º${unidade === "metric" ? "C" : "F"}`}
             </span>
-            <p>{resultado.atual.weather[0].description}</p>
+            <p>{resultadoAtual?.weather[0]?.description}</p>
           </div>
         </div>
         <div className="info">
           <span>Local</span>
           <p>
-            {resultado.atual.name}, {resultado.atual.sys.country}
+            {resultadoAtual?.name}, {resultadoAtual?.sys?.country}
           </p>
         </div>
       </div>
       <div className="adicional">
         <h1>Próximas horas</h1>
         <div className="hourly-container">
-          {resultado.horarios?.map((hora, i) => {
+          {resultadoHorarios?.map((hora, i) => {
             let horario = new Date(hora.dt_txt);
             return (
               <div className="hour-item" key={i}>

@@ -14,6 +14,7 @@ const Home = () => {
   );
   const [modal, setModal] = useState({ estado: false, tipo: 1 });
   const [buscaAtiva, setBuscaAtiva] = useState(false);
+  const [exibirListagem, setExibirListagem] = useState(false);
 
   useEffect(() => {
     if (!buscaAtiva) return;
@@ -35,7 +36,21 @@ const Home = () => {
   };
 
   const handleSubmit = () => {
-    handleObterClima({ cidade: texto });
+    setExibirListagem(true);
+    handleBuscarCidade(texto);
+  };
+
+  /**
+   * Recebe um objeto e um array de strings para verificar se o mesmo as possui como chaves.
+   * Retorna [true] ou [false] na totalidade.
+   * @param {object} objeto
+   * @param  {...String} propriedades
+   */
+  const temChaves = (objeto, ...propriedades) => {
+    propriedades.forEach((propriedade) => {
+      if (!objeto.hasOwnProperty(propriedade)) return;
+    });
+    return true;
   };
 
   const handleLocalizacao = () => {
@@ -45,13 +60,30 @@ const Home = () => {
     });
   };
 
-  const handleBuscarCidade = ({ cidade }) => {
-    // fetch com um valor de cidade
-    // retorna cidades encontradas com o texto buscado
-    // envia os valores para o componente Header para exibição no div `listagem`
+  const handleBuscarCidade = (cidade) => {
+    fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${cidade}&appid=${
+        import.meta.env.VITE_API_KEY
+      }&limit=5&lang=pt`
+    )
+      .then((response) => {
+        if (response.ok) return response.json();
+        return Promise.reject(response);
+      })
+      .then((dados) => {
+        setModal({ estado: false, tipo: 1 });
+        setResultado((prevState) => ({
+          ...prevState,
+          cidades: dados,
+        }));
+        setBuscaAtiva(true);
+      })
+      .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
 
   const handleObterClima = ({ cidade, lat, lon }) => {
+    setExibirListagem(false);
+
     if (!{ lat, lon } && texto === "")
       return setModal({ estado: true, tipo: 1 });
 
@@ -111,12 +143,18 @@ const Home = () => {
         unidade={unidade}
         handleUnidade={handleUnidade}
         handleLocalizacao={handleLocalizacao}
+        cidades={resultado.cidades}
+        exibirListagem={exibirListagem}
       />
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />
       )}
-      {resultado && !!Object.keys(resultado).length && (
-        <Detalhes resultado={resultado} unidade={unidade} />
+      {temChaves(resultado, "atual", "horarios") && (
+        <Detalhes
+          resultadoAtual={resultado.atual}
+          resultadoHorarios={resultado.horarios}
+          unidade={unidade}
+        />
       )}
       <Footer />
     </div>

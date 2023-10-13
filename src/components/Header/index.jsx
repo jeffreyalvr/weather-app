@@ -12,15 +12,9 @@ const Header = ({
   unidade,
   handleUnidade,
   handleLocalizacao,
+  cidades,
+  exibirListagem,
 }) => {
-  const cidades_placeholder = [
-    "João Pessoa",
-    "Johannesburg",
-    "Jodhpur",
-    "Johor Bahru",
-    "Jos",
-  ];
-
   const handleKeyPress = (e) => {
     if (e.keyCode == 13) handleSubmit();
   };
@@ -72,19 +66,26 @@ const Header = ({
           <button onClick={handleLocalizacao}>Usar localização atual</button>
         </div>
       </div>
-      <div className="listagem">
-        <div className="cidades">
-          {cidades_placeholder.map((cidade, i) => (
-            <div
-              className="item"
-              key={i}
-              onClick={() => handleObterClima(cidade)}
-            >
-              {cidade}
-            </div>
-          ))}
+      {cidades && exibirListagem ? (
+        <div className="listagem">
+          <div className="cidades">
+            {cidades.map((cidade, i) => (
+              <div
+                className="item"
+                key={i}
+                onClick={() =>
+                  handleObterClima({ lat: cidade.lat, lon: cidade.lon })
+                }
+              >
+                {cidade.name +
+                  ", " +
+                  (cidade.state !== undefined ? cidade.state + ", " : "") +
+                  cidade.country}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
     </header>
   );
 };
