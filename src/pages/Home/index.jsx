@@ -47,10 +47,9 @@ const Home = () => {
    * @param  {...String} propriedades
    */
   const temChaves = (objeto, ...propriedades) => {
-    propriedades.forEach((propriedade) => {
-      if (!objeto.hasOwnProperty(propriedade)) return;
-    });
-    return true;
+    return propriedades.every((propriedade) =>
+      objeto.hasOwnProperty(propriedade)
+    );
   };
 
   const handleLocalizacao = () => {
