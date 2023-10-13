@@ -19,10 +19,33 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
           </div>
         </div>
         <div className="info">
-          <span>Local</span>
+          <span>Local aprox.</span>
           <p>
+            {console.log(resultadoAtual)}
             {resultadoAtual?.name}, {resultadoAtual?.sys?.country}
           </p>
+        </div>
+      </div>
+      <div className="adicional">
+        <h1>Informações adicionais</h1>
+        <div className="container">
+          <span>
+            Sensação:{" "}
+            {resultadoAtual?.main?.feels_like.toFixed() +
+              ` º${unidade === "metric" ? "C" : "F"}`}
+          </span>
+          <span>
+            Máxima:{" "}
+            {resultadoAtual?.main?.temp_max.toFixed() +
+              ` º${unidade === "metric" ? "C" : "F"}`}
+          </span>
+          <span>
+            Mínima:{" "}
+            {resultadoAtual?.main?.temp_min.toFixed() +
+              ` º${unidade === "metric" ? "C" : "F"}`}
+          </span>
+          <span>Vento direção: {resultadoAtual?.wind?.deg}</span>
+          <span>Vento velocidade: {resultadoAtual?.wind?.speed}</span>
         </div>
       </div>
       <div className="adicional">
