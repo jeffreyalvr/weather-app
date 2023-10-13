@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!buscaAtiva) return;
-    handleBuscaCidade({ cidade: texto });
+    handleObterClima({ cidade: texto });
   }, [unidade]);
 
   const handleFecharModal = () => {
@@ -35,17 +35,19 @@ const Home = () => {
   };
 
   const handleSubmit = () => {
-    handleBuscaCidade({ cidade: texto });
+    handleObterClima({ cidade: texto });
   };
 
   const handleLocalizacao = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      handleBuscaCidade({ lat: latitude, lon: longitude });
+      handleObterClima({ lat: latitude, lon: longitude });
     });
   };
 
-  const handleBuscaCidade = ({ cidade, lat, lon }) => {
+  const handleBuscarCidade = ({ cidade }) => {};
+
+  const handleObterClima = ({ cidade, lat, lon }) => {
     if (!{ lat, lon } && texto === "")
       return setModal({ estado: true, tipo: 1 });
 
@@ -68,12 +70,12 @@ const Home = () => {
           atual: dados,
         }));
         setBuscaAtiva(true);
-        handleTemperaturaPorHorarios(dados);
+        handleObterClimaPorHorarios(dados);
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
 
-  const handleTemperaturaPorHorarios = (dados) => {
+  const handleObterClimaPorHorarios = (dados) => {
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${
         dados.coord.lat
@@ -101,7 +103,7 @@ const Home = () => {
         texto={texto}
         handleSubmit={handleSubmit}
         handleInputChange={handleInputChange}
-        handleBuscaCidade={handleBuscaCidade}
+        handleObterClima={handleObterClima}
         unidade={unidade}
         handleUnidade={handleUnidade}
         handleLocalizacao={handleLocalizacao}

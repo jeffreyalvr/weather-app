@@ -8,7 +8,7 @@ const Header = ({
   texto,
   handleSubmit,
   handleInputChange,
-  handleBuscaCidade,
+  handleObterClima,
   unidade,
   handleUnidade,
   handleLocalizacao,
@@ -72,13 +72,13 @@ const Header = ({
           <button onClick={handleLocalizacao}>Usar localização atual</button>
         </div>
       </div>
-      <div className="listagem hidden">
+      <div className="listagem">
         <div className="cidades">
           {cidades_placeholder.map((cidade, i) => (
             <div
               className="item"
               key={i}
-              onClick={() => handleBuscaCidade(cidade)}
+              onClick={() => handleObterClima(cidade)}
             >
               {cidade}
             </div>
