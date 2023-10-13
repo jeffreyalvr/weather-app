@@ -198,3 +198,19 @@ header {
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 650px) {
+  header {
+    padding: 0;
+  }
+  .logo-container {
+    margin-bottom: 50px;
+  }
+  .logo-container img {
+    height: 90px;
+    width: 90px;
+  }
+  .logo-container span {
+    font-size: 35px;
+  }
+}
