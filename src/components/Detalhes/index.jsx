@@ -1,21 +1,21 @@
 import "./styles.css";
 
-import img_sunny from "../../assets/icons/sunny.png";
-import img_rainning from "../../assets/icons/rainning.png";
 import img_empty from "../../assets/icons/no-image.png";
 
 import img_wind from "../../assets/icons/wind.png";
 import img_sensation from "../../assets/icons/sensation.png";
 import img_temp_max from "../../assets/icons/temp_max.png";
 import img_temp_min from "../../assets/icons/temp_min.png";
-import img_arrow from "../../assets/icons/arrow-vertical.png";
 
 const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
   return (
     <div className={`detalhes animate`}>
       <div className="hoje">
         <div className="clima">
-          <img src={img_empty} alt="" />
+          <img
+            src={`https://openweathermap.org/img/wn/${resultadoAtual?.weather[0]?.icon}@2x.png`}
+            alt="Ícone do clima atual"
+          />
           <div className="temperatura">
             <span>
               {resultadoAtual?.main?.temp.toFixed() +
@@ -27,7 +27,6 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
         <div className="info">
           <span>Local aprox.</span>
           <p>
-            {console.log(resultadoAtual)}
             {resultadoAtual?.name}, {resultadoAtual?.sys?.country}
           </p>
         </div>
@@ -73,7 +72,10 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
             return (
               <div className="hour-item" key={i}>
                 <span>{horario.getHours() + ":00 h"}</span>
-                <img src={img_empty} alt="" />
+                <img
+                  src={`https://openweathermap.org/img/wn/${resultadoHorarios[i]?.weather[0]?.icon}@2x.png`}
+                  alt="Ícone do clima atual"
+                />
                 <p>
                   {hora.main.temp_max.toFixed() +
                     ` º${unidade === "metric" ? "C" : "F"}`}
