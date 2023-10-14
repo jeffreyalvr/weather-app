@@ -1,7 +1,6 @@
 import "./styles.css";
 
-import img_empty from "../../assets/icons/no-image.png";
-
+import img_info from "../../assets/icons/info.png";
 import img_wind from "../../assets/icons/wind.png";
 import img_sensation from "../../assets/icons/sensation.png";
 import img_temp_max from "../../assets/icons/temp_max.png";
@@ -25,7 +24,10 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
           </div>
         </div>
         <div className="info">
-          <span>Local aprox.</span>
+          <span title="Alguns locais podem retornar medições em pontos específicos da cidade.">
+            Local aprox.{" "}
+            <img src={img_info} className="invert" alt="Ícone de informação" />
+          </span>
           <p>
             {resultadoAtual?.name}, {resultadoAtual?.sys?.country}
           </p>

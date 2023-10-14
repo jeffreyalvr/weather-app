@@ -36,8 +36,17 @@ const Home = () => {
   };
 
   const handleSubmit = () => {
-    setExibirListagem(true);
+    if (handleValidarTexto(texto)) return setModal({ estado: true, tipo: 1 });
     handleBuscarCidade(texto);
+  };
+
+  /**
+   * Verifica se a string especificada possui apenas caracteres especiais e números.
+   * @param {string} texto
+   * @returns {boolean}
+   */
+  const handleValidarTexto = (texto) => {
+    return /^[ '-\d]+$/.test(texto) || texto === "";
   };
 
   /**
@@ -45,6 +54,7 @@ const Home = () => {
    * Retorna [true] ou [false] na totalidade.
    * @param {object} objeto
    * @param  {...String} propriedades
+   * @returns {boolean}
    */
   const temChaves = (objeto, ...propriedades) => {
     return propriedades.every((propriedade) =>
@@ -59,6 +69,11 @@ const Home = () => {
     });
   };
 
+  /**
+   * Retorna a lista de cidades com o nome semelhante ao da busca.
+   * @param {string} cidade
+   * @returns {object[]}
+   */
   const handleBuscarCidade = (cidade) => {
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${cidade}&appid=${
@@ -76,10 +91,20 @@ const Home = () => {
           cidades: dados,
         }));
         setBuscaAtiva(true);
+        if (Object.keys(dados).length <= 0)
+          return setModal({ estado: true, tipo: 3 });
+        setExibirListagem(true);
       })
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
 
+  /**
+   * Retorna os detalhes do clima da cidade buscada com base no nome ou latitude e longitude.
+   * @param {string} cidade
+   * @param {string} lat
+   * @param {string} lon
+   * @returns {object}
+   */
   const handleObterClima = ({ cidade, lat, lon }) => {
     setExibirListagem(false);
 
@@ -110,6 +135,12 @@ const Home = () => {
       .catch((err) => setModal({ estado: true, tipo: 2 }));
   };
 
+  /**
+   * Retorna os detalhes com base em horários da cidade buscada.
+   * Necessita dos dados do response dos detalhes da cidade.
+   * @param {object} dados
+   * @returns {object[]}
+   */
   const handleObterClimaPorHorarios = (dados) => {
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${

@@ -8,15 +8,17 @@ const Erro = ({ tipo, handleFecharModal }) => {
       <div className="erro-body">
         <img src={warning_icon} alt="Erro" title="Erro" />
         <div className="message">
-          {tipo === 1 ? (
-            <span>O campo de busca não pode ficar vazio.</span>
-          ) : (
+          {tipo === 1 && <span>O campo de busca não pode ficar vazio.</span>}
+          {tipo === 2 && (
             <>
               <span>Ocorreu um erro ao se conectar ao OpenWeather.</span>
               <span>
                 Verifique o campo de busca ou tente novamente mais tarde.
               </span>
             </>
+          )}
+          {tipo === 3 && (
+            <span>Nenhum local encontrado para a pesquisa especificada.</span>
           )}
         </div>
       </div>
