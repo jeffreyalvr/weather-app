@@ -31,6 +31,41 @@ body {
   width: 100%;
 }
 
+.wrapper .box {
+  width: 100%;
+  background-color: #3636361f;
+  border-radius: 25px;
+  padding: 30px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+}
+
+.wrapper .box button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 15px 30px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: #e1e1e1;
+  flex-grow: 1;
+  transition: ease-in 0.3s;
+  font-weight: bold;
+  letter-spacing: 0.4pt;
+  height: 100%;
+}
+
+.wrapper .box button:hover {
+  background-color: #fff;
+}
+
 ::selection {
   background-color: var(--selection-bg-color);
 }

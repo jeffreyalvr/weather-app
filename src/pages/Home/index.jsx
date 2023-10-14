@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import Header from "../../components/Header";
+import { HeaderBusca } from "../../components/Header";
 import Detalhes from "../../components/Detalhes";
 import Erro from "../../components/Erro";
 import Footer from "../../components/Footer";
@@ -165,7 +165,7 @@ const Home = () => {
 
   return (
     <div className="wrapper animate">
-      <Header
+      <HeaderBusca
         texto={texto}
         handleSubmit={handleSubmit}
         handleInputChange={handleInputChange}
