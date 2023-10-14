@@ -17,9 +17,11 @@
 body {
   background: linear-gradient(180deg, var(--color-blue), var(--color-red));
   background-attachment: fixed;
+}
+
+#root {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
