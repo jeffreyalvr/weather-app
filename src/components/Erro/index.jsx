@@ -1,12 +1,12 @@
 import "./styles.css";
 
-import warning_icon from "../../assets/icons/warning.png";
+import img_warning from "../../assets/icons/warning.png";
 
 const Erro = ({ tipo, handleFecharModal }) => {
   return (
     <div className="erro-container animate">
       <div className="erro-body">
-        <img src={warning_icon} alt="Erro" title="Erro" />
+        <img src={img_warning} alt="Erro" title="Erro" />
         <div className="message">
           {tipo === 1 && <span>O campo de busca não pode ficar vazio.</span>}
           {tipo === 2 && (
