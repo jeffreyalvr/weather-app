@@ -6,6 +6,7 @@ import NotFound from "../pages/NotFound";
 const RoutePaths = () =>
   useRoutes([
     { path: "/", element: <Home /> },
+    { path: "/busca/:cidade", element: <Home /> },
     { path: "*", element: <NotFound /> },
   ]);
 

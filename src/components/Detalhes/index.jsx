@@ -5,6 +5,9 @@ import img_wind from "../../assets/icons/wind.png";
 import img_sensation from "../../assets/icons/sensation.png";
 import img_temp_max from "../../assets/icons/temp_max.png";
 import img_temp_min from "../../assets/icons/temp_min.png";
+import img_humidity_per from "../../assets/icons/humidity_per.png";
+import img_pressure from "../../assets/icons/pressure.png";
+import img_clouds from "../../assets/icons/clouds.png";
 
 const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
   return (
@@ -44,15 +47,30 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
           </div>
           <div className="card">
             <img src={img_temp_max} alt="Ícone de temperatura máxima" />
-            Máxima:{" "}
+            Máxima atual:{" "}
             {resultadoAtual?.main?.temp_max.toFixed() +
               ` º${unidade === "metric" ? "C" : "F"}`}
           </div>
           <div className="card">
             <img src={img_temp_min} alt="Ícone de temperatura mínima" />
-            Mínima:{" "}
+            Mínima atual:{" "}
             {resultadoAtual?.main?.temp_min.toFixed() +
               ` º${unidade === "metric" ? "C" : "F"}`}
+          </div>
+          <div className="card">
+            <img src={img_humidity_per} alt="Ícone de umidade" />
+            Umidade: {resultadoAtual?.main?.humidity}%
+            {console.log(resultadoAtual)}
+          </div>
+          <div className="card">
+            <img src={img_pressure} alt="Ícone de pressão atmosférica" />
+            Pressão: {resultadoAtual?.main?.pressure} hPa
+            {console.log(resultadoAtual)}
+          </div>
+          <div className="card">
+            <img src={img_clouds} alt="Ícone de cobertura das nuvens" />
+            Cobertura das nuvens: {resultadoAtual?.clouds.all}%
+            {console.log(resultadoAtual)}
           </div>
           <div className="card">
             <img src={img_wind} alt="Ícone de direção do vento" />
