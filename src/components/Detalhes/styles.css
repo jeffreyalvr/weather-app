@@ -136,10 +136,12 @@
   align-items: center;
   color: #fff;
   padding: 20px 0;
+  border-radius: 25px;
 }
 
-.hour-item:not(:last-child) {
-  border-bottom: 1px solid var(--border-dark-color);
+.hour-item:hover {
+  background-color: rgba(168, 168, 168, 0.122);
+  transition: background-color 0.3s ease-in;
 }
 
 .hour-item span {
@@ -174,8 +176,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  .hour-item:not(:last-child) {
-    border-bottom: 1px solid var(--border-dark-color);
   }
 }
