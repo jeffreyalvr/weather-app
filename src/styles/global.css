@@ -12,6 +12,8 @@
   --selection-bg-color: #626262b0;
   --color-blue: #307aba;
   --color-red: #8e4b4b;
+  --button-bg: #e1e1e1;
+  --button-bg-hover: #fff;
 }
 
 body {
@@ -52,20 +54,12 @@ body {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
   padding: 15px 30px;
-  cursor: pointer;
-  border: 1px solid transparent;
-  background-color: #e1e1e1;
   flex-grow: 1;
   transition: ease-in 0.3s;
   font-weight: bold;
   letter-spacing: 0.4pt;
   height: 100%;
-}
-
-.wrapper .box button:hover {
-  background-color: #fff;
 }
 
 ::selection {
@@ -78,6 +72,17 @@ body {
 
 img.invert {
   filter: invert(100%);
+}
+
+button {
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid var(--button-bg);
+  background-color: var(--button-bg);
+}
+
+button:hover {
+  background-color: var(--button-bg-hover);
 }
 
 @media screen and (max-width: 1200px) {

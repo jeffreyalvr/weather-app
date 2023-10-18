@@ -49,6 +49,14 @@ const Home = () => {
     setTexto(valor);
   };
 
+  const handleClearSearch = () => {
+    setBuscaAtiva(false);
+    setExibirListagem(false);
+    setTexto("");
+    setResultado({});
+    navigate("/");
+  };
+
   const handleSubmit = () => {
     if (handleValidarTexto(texto)) return setModal({ estado: true, tipo: 1 });
     handleBuscarCidade(texto);
@@ -183,6 +191,7 @@ const Home = () => {
         handleLocalizacao={handleLocalizacao}
         cidades={resultado.cidades}
         exibirListagem={exibirListagem}
+        handleClearSearch={handleClearSearch}
       />
       {modal.estado && (
         <Erro tipo={modal.tipo} handleFecharModal={handleFecharModal} />

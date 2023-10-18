@@ -1,6 +1,7 @@
 import img_logo from "../../assets/images/logo.png";
 import img_search from "../../assets/icons/search.png";
 import img_localizacao from "../../assets/icons/localizacao.png";
+import img_close from "../../assets/icons/close.png";
 
 const HeaderBusca = ({
   texto,
@@ -12,6 +13,7 @@ const HeaderBusca = ({
   handleLocalizacao,
   cidades,
   exibirListagem,
+  handleClearSearch,
 }) => {
   const handleKeyPress = (e) => {
     if (e.keyCode == 13) handleSubmit();
@@ -61,7 +63,19 @@ const HeaderBusca = ({
             src={img_localizacao}
             alt="Ícone de localização"
           />
-          <button onClick={handleLocalizacao}>Usar localização atual</button>
+          <button className="label-btn" onClick={handleLocalizacao}>
+            Usar localização atual
+          </button>
+        </div>
+        <div className="item">
+          <button
+            className="search-tag"
+            onClick={handleClearSearch}
+            title="Remover a busca atual"
+          >
+            {texto}
+            <img src={img_close} alt="Ícone de fechar" />
+          </button>
         </div>
       </div>
       {cidades && exibirListagem ? (
