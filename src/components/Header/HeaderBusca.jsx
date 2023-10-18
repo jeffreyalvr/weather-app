@@ -67,16 +67,18 @@ const HeaderBusca = ({
             Usar localização atual
           </button>
         </div>
-        <div className="item">
-          <button
-            className="search-tag"
-            onClick={handleClearSearch}
-            title="Remover a busca atual"
-          >
-            {texto}
-            <img src={img_close} alt="Ícone de fechar" />
-          </button>
-        </div>
+        {texto && (
+          <div className="item">
+            <button
+              className="search-tag"
+              onClick={handleClearSearch}
+              title="Remover a busca atual"
+            >
+              {texto}
+              <img src={img_close} alt="Ícone de fechar" />
+            </button>
+          </div>
+        )}
       </div>
       {cidades && exibirListagem ? (
         <div className="listagem">
