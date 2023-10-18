@@ -16,6 +16,9 @@ const Home = () => {
   const [buscaAtiva, setBuscaAtiva] = useState(false);
   const [exibirListagem, setExibirListagem] = useState(false);
 
+  const base_url = "https://api.openweathermap.org";
+  const aditional_suffix_url = `&lang=pt&appid=${import.meta.env.VITE_API_KEY}`;
+
   useEffect(() => {
     if (!buscaAtiva) return;
     handleObterClima({ cidade: texto });
@@ -76,9 +79,7 @@ const Home = () => {
    */
   const handleBuscarCidade = (cidade) => {
     fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${cidade}&appid=${
-        import.meta.env.VITE_API_KEY
-      }&limit=5&lang=pt`
+      `${base_url}/geo/1.0/direct?q=${cidade}&limit=5${aditional_suffix_url}`
     )
       .then((response) => {
         if (response.ok) return response.json();
@@ -114,9 +115,7 @@ const Home = () => {
     let prefix = cidade ? `q=${cidade}` : `lat=${lat}&lon=${lon}`;
 
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?${prefix}&appid=${
-        import.meta.env.VITE_API_KEY
-      }&units=${unidade}&lang=pt`
+      `${base_url}/data/2.5/weather?${prefix}&units=${unidade}${aditional_suffix_url}`
     )
       .then((response) => {
         if (response.ok) return response.json();
@@ -143,11 +142,7 @@ const Home = () => {
    */
   const handleObterClimaPorHorarios = (dados) => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${
-        dados.coord.lat
-      }&lon=${dados.coord.lon}&appid=${
-        import.meta.env.VITE_API_KEY
-      }&cnt=15&units=${unidade}&lang=pt`
+      `${base_url}/data/2.5/forecast?lat=${dados.coord.lat}&lon=${dados.coord.lon}&cnt=15&units=${unidade}${aditional_suffix_url}`
     )
       .then((forecast_response) => {
         if (forecast_response.ok) return forecast_response.json();
