@@ -76,7 +76,7 @@ const Home = () => {
    */
   const handleBuscarCidade = (cidade) => {
     fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${cidade}&appid=${
+      `https://api.openweathermap.org/geo/1.0/direct?q=${cidade}&appid=${
         import.meta.env.VITE_API_KEY
       }&limit=5&lang=pt`
     )
