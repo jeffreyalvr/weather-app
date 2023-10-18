@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { useParams, useNavigate } from "react-router-dom";
+
 import { HeaderBusca } from "../../components/Header";
 import Detalhes from "../../components/Detalhes";
 import Erro from "../../components/Erro";
@@ -19,10 +21,18 @@ const Home = () => {
   const base_url = "https://api.openweathermap.org";
   const aditional_suffix_url = `&lang=pt&appid=${import.meta.env.VITE_API_KEY}`;
 
+  let { cidade_from_url } = useParams();
+  let navigate = useNavigate();
+
   useEffect(() => {
     if (!buscaAtiva) return;
     handleObterClima({ cidade: texto });
   }, [unidade]);
+
+  useEffect(() => {
+    if (!cidade_from_url) return;
+    handleBuscarCidade(cidade_from_url);
+  }, [cidade_from_url]);
 
   const handleFecharModal = () => {
     setModal({ estado: false });
@@ -113,6 +123,8 @@ const Home = () => {
       return setModal({ estado: true, tipo: 1 });
 
     let prefix = cidade ? `q=${cidade}` : `lat=${lat}&lon=${lon}`;
+
+    navigate(`/busca/${cidade}`);
 
     fetch(
       `${base_url}/data/2.5/weather?${prefix}&units=${unidade}${aditional_suffix_url}`
