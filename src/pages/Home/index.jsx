@@ -31,6 +31,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!cidade_from_url) return;
+    setTexto(cidade_from_url);
     handleBuscarCidade(cidade_from_url);
   }, [cidade_from_url]);
 
@@ -88,6 +89,8 @@ const Home = () => {
    * @returns {object[]}
    */
   const handleBuscarCidade = (cidade) => {
+    navigate(`/busca/${cidade.toLowerCase()}`);
+
     fetch(
       `${base_url}/geo/1.0/direct?q=${cidade}&limit=5${aditional_suffix_url}`
     )
@@ -123,8 +126,6 @@ const Home = () => {
       return setModal({ estado: true, tipo: 1 });
 
     let prefix = cidade ? `q=${cidade}` : `lat=${lat}&lon=${lon}`;
-
-    navigate(`/busca/${cidade}`);
 
     fetch(
       `${base_url}/data/2.5/weather?${prefix}&units=${unidade}${aditional_suffix_url}`

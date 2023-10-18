@@ -60,17 +60,14 @@ const Detalhes = ({ resultadoAtual, resultadoHorarios, unidade }) => {
           <div className="card">
             <img src={img_humidity_per} alt="Ícone de umidade" />
             Umidade: {resultadoAtual?.main?.humidity}%
-            {console.log(resultadoAtual)}
           </div>
           <div className="card">
             <img src={img_pressure} alt="Ícone de pressão atmosférica" />
             Pressão: {resultadoAtual?.main?.pressure} hPa
-            {console.log(resultadoAtual)}
           </div>
           <div className="card">
             <img src={img_clouds} alt="Ícone de cobertura das nuvens" />
             Cobertura das nuvens: {resultadoAtual?.clouds.all}%
-            {console.log(resultadoAtual)}
           </div>
           <div className="card">
             <img src={img_wind} alt="Ícone de direção do vento" />

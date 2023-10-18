@@ -72,7 +72,10 @@ const HeaderBusca = ({
                 className="item"
                 key={i}
                 onClick={() =>
-                  handleObterClima({ lat: cidade.lat, lon: cidade.lon })
+                  handleObterClima({
+                    lat: cidade.lat,
+                    lon: cidade.lon,
+                  })
                 }
               >
                 {cidade.name +
