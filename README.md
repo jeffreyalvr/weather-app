@@ -30,7 +30,7 @@ Agora utilize os seguintes comandos para suas operações:
 
 2. Iniciação do servidor:
 
-`npm run dev`
+`npm run start`
 
 3. Por fim, acesse a aplicação global por meio da seguinte URL:
 
