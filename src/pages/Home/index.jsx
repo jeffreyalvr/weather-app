@@ -163,7 +163,7 @@ const Home = () => {
    */
   const handleObterClimaPorHorarios = (dados) => {
     fetch(
-      `${base_url}/data/2.5/forecast?lat=${dados.coord.lat}&lon=${dados.coord.lon}&cnt=15&units=${unidade}${aditional_suffix_url}`
+      `${base_url}/data/2.5/forecast?lat=${dados.coord.lat}&lon=${dados.coord.lon}&cnt=7&units=${unidade}${aditional_suffix_url}`
     )
       .then((forecast_response) => {
         if (forecast_response.ok) return forecast_response.json();
