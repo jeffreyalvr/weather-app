@@ -2,11 +2,11 @@
 
 ## Informações gerais
 
-### Descrição
+## Descrição
 
 Projeto para listagem de informações relacionadas ao clima da cidade pesquisada.
 
-### Tecnologias utilizadas
+## Tecnologias utilizadas
 
 1. React JS;
 2. API pública de clima OpenWeather API.
