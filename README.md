@@ -9,7 +9,13 @@ Projeto para listagem de informações relacionadas ao clima da cidade pesquisad
 ### Tecnologias utilizadas
 
 1. React JS;
-2. API pública de clima _(a ser decidida)_.
+2. API pública de clima OpenWeather API.
+
+## Limitações encontradas
+
+1. A API do OpenWeather é paga, mas oferece um plano limitado para usuários gratuítos.
+2. Com o uso da API gratuíta, não é possível verificar informações mais completas do clima na cidade, e informações de próximos dias não é possível, algo que era inicialmente planejado no projeto.
+3. A busca de próximas horas é limitada, não traz consigo muitas informações ou todos os horários, o que dificulta a exibição de forma mais organizada.
 
 ## Acesso direto ao projeto em produção
 
